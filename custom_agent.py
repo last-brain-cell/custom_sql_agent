@@ -272,10 +272,11 @@ class CustomAgent:
 
         end = time.perf_counter()
         return {
+            "prompt": user_input_prompt,
             "detected_table": self.table,
             "table_headers": self.schema,
-            "detected_content": self.contents,
-            "generated_query": sql_query,
+            "detected_content": json.loads(self.contents[9:-4]),
+            "generated_query": sql_query.replace("`", ""),
             "obtained_result": result_json,
             "execution_time": f"{round(end - start):.2f}s",
             "session_usage": self.get_session_usage()

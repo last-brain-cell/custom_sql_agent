@@ -7,3 +7,4 @@ nltk~=3.8.1
 uvicorn
 google-cloud-aiplatform>=1.38.0
 pymysql
+python-dotenv
