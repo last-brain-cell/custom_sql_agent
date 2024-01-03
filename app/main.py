@@ -7,7 +7,7 @@ import time
 import os
 import dotenv
 
-dotenv.load_dotenv(".env")
+dotenv.load_dotenv("../.env")
 
 
 def agent_config():
@@ -40,8 +40,8 @@ app = FastAPI(lifespan=lifespan)
 @app.get("/predict")
 async def predict(prompt: str):
     try:
-        result = agents["gemini"] = agent_config()
-        return result
+        result = agents["gemini"]
+        return result.run(prompt)
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
